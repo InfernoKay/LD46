@@ -10,6 +10,7 @@ class Game extends Process {
 	public var scroller : h2d.Layers;
 	public var level : Level;
 	public var hud : ui.Hud;
+	public var player : en.Hero;
 
 	public function new() {
 		super(Main.ME);
@@ -31,7 +32,8 @@ class Game extends Process {
 		Process.resizeAll();
 		trace(Lang.t._("Game is ready."));
 
-		new en.Hero(5,5);
+		player = new en.Hero(5,5);
+		camera.trackTarget(player, false);
 	}
 
 	public function onCdbReload() {
